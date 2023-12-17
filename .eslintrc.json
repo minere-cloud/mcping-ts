@@ -1,10 +1,14 @@
 {
   "root": true,
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "sourceType": "module",
     "ecmaVersion": 2015
   },
-  "ignorePatterns": ["dist/*", "node_modules/*"],
+  "ignorePatterns": [
+    "dist/*",
+    "node_modules/*"
+  ],
   "rules": {
     "quotes": [
       2,
@@ -14,12 +18,18 @@
       }
     ],
     "no-multiple-empty-lines": "error",
-    "semi": [2, "never"]
+    "semi": [
+      2,
+      "never"
+    ]
   },
   "plugins": [
-    "perfectionist"
+    "perfectionist",
+    "@typescript-eslint"
   ],
   "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
     "plugin:perfectionist/recommended-alphabetical",
     "plugin:perfectionist/recommended-natural"
   ]

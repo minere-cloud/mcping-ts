@@ -1,10 +1,10 @@
-import { defineConfig } from "tsup";
+import { defineConfig } from 'tsup'
 
 export default defineConfig({
-  entry: ["index.ts"],
-  format: ["cjs", "esm"], // Build for commonJS and ESmodules
-  dts: true, // Generate declaration file (.d.ts)
-  splitting: false,
-  sourcemap: true,
   clean: true,
-});
+  dts: true, // Generate declaration file (.d.ts)
+  entry: ['index.ts'],
+  format: ['cjs', 'esm'], // Build for commonJS and ESmodules
+  sourcemap: true,
+  splitting: false,
+})

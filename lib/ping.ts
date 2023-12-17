@@ -1,27 +1,27 @@
-import net from "net"
+import net from 'net'
 
 import MinecraftProtocol from './protocol.js'
 import MinecraftBufferReader from './reader.js'
 
 type MinecraftServerInfo = {
-  version: {
-    name: string;
-    protocol: number;
+  description: {
+    text: string;
   };
+  enforcesSecureChat: boolean;
+  favicon: string;
   players: {
     max: number;
     online: number;
     sample: {
-      name: string;
       id: string;
+      name: string;
     }[];
   };
-  description: {
-    text: string;
-  };
-  favicon: string;
-  enforcesSecureChat: boolean;
   previewsChat: boolean;
+  version: {
+    name: string;
+    protocol: number;
+  };
 }
 
 class MinecraftServer {

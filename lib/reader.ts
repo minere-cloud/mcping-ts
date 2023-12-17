@@ -2,29 +2,16 @@ class MinecraftBufferReader {
   private _buffer
   private _offset
 
-  constructor (buffer: Buffer) {
+  constructor(buffer: Buffer) {
     this._buffer = buffer
     this._offset = 0
   }
 
-  readVarInt () {
-    let val = 0
-    let count = 0
-
-    while (true) {
-      const b = this._buffer.readUInt8(this._offset++)
-      
-      val |= (b & 0x7F) << count++ * 7;
-      
-      if ((b & 0x80) != 128) {
-        break
-      }
-    }
-
-    return val
+  offset() {
+    return this._offset
   }
 
-  readString () {
+  readString() {
     const length = this.readVarInt()
     const val = this._buffer.toString('utf-8', this._offset, this._offset + length)
 
@@ -34,8 +21,21 @@ class MinecraftBufferReader {
     return val
   }
 
-  offset () {
-    return this._offset
+  readVarInt() {
+    let val = 0
+    let count = 0
+
+    for (; ;) {
+      const b = this._buffer.readUInt8(this._offset++)
+
+      val |= (b & 0x7F) << count++ * 7
+
+      if ((b & 0x80) != 128) {
+        break
+      }
+    }
+
+    return val
   }
 }
 

@@ -1,3 +1,3 @@
-import MinecraftServer from "./lib/ping.js";
+import MinecraftServer from './lib/ping.js'
 
 export default MinecraftServer
