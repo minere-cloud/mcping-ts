@@ -1,5 +1,5 @@
 class MinecraftProtocol {
-  static writeVarInt (val) {
+  static writeVarInt (val: number) {
     // "VarInts are never longer than 5 bytes"
     // https://wiki.vg/Data_types#VarInt_and_VarLong
     const buf = Buffer.alloc(5)
@@ -15,18 +15,18 @@ class MinecraftProtocol {
       }
     }
 
-    return buf.slice(0, written)
+    return buf.subarray(0, written)
   }
 
-  static writeString (val) {
-    return Buffer.from(val, 'UTF-8')
+  static writeString (val: string) {
+    return Buffer.from(val)
   }
 
-  static writeUShort (val) {
+  static writeUShort (val: number) {
     return Buffer.from([val >> 8, val & 0xFF])
   }
 
-  static concat (chunks) {
+  static concat (chunks: Buffer[]) {
     let length = 0
 
     for (const chunk of chunks) {
@@ -42,4 +42,4 @@ class MinecraftProtocol {
   }
 }
 
-module.exports = MinecraftProtocol
+export default MinecraftProtocol

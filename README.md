@@ -1,9 +1,9 @@
-# mcping-js
-A modern JavaScript library for querying [Minecraft Java Edition](https://minecraft.net) servers using the vanilla [Server List Ping](https://wiki.vg/Server_List_Ping) protocol.
+# mcping-ts
+A modern Typescript library for querying [Minecraft Java Edition](https://minecraft.net) servers using the vanilla [Server List Ping](https://wiki.vg/Server_List_Ping) protocol.
 
 ## Usage
 ```javascript
-const mcping = require('mcping-js')
+import mcping from "mcping-ts"
 
 // 25565 is the default Minecraft Java Edition multiplayer server port
 // The port may be omitted and will default to 25565

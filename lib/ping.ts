@@ -1,15 +1,18 @@
-const net = require('net')
+import net from "net"
 
-const MinecraftProtocol = require('./protocol')
-const MinecraftBufferReader = require('./reader')
+import MinecraftProtocol from './protocol.js'
+import MinecraftBufferReader from './reader.js'
 
 class MinecraftServer {
-  constructor (host, port) {
+  private host
+  private port
+
+  constructor (host: string, port: number) {
     this.host = host
     this.port = port || 25565
   }
 
-  ping (timeout, protocolVersion, callback) {
+  ping (timeout: number, protocolVersion: number, callback: (err: Error | null, response?: string) => void) {
     const socket = net.createConnection({
       host: this.host,
       port: this.port
@@ -33,7 +36,7 @@ class MinecraftServer {
     // This is mostly dangerous since it can swallow errors
     let didFireError = false
 
-    const handleErr = (err) => {
+    const handleErr = (err: Error) => {
       // Always attempt to destroy the socket
       closeSocket()
 
@@ -100,16 +103,16 @@ class MinecraftServer {
         const reply = bufferReader.readString()
 
         try {
-          const message = JSON.parse(reply)
+          const response = JSON.parse(reply)
 
-          callback(null, message)
+          callback(null, response)
 
           // Close the socket and clear the timeout task
           // This is a general cleanup for success conditions
           closeSocket()
         } catch (err) {
           // Safely propagate JSON parse errors to the callback
-          handleErr(err)
+          handleErr(err as Error)
         }
       } else {
         handleErr(new Error('Received unexpected packet'))
@@ -120,4 +123,4 @@ class MinecraftServer {
   }
 }
 
-module.exports = MinecraftServer
+export default MinecraftServer

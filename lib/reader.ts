@@ -1,5 +1,8 @@
 class MinecraftBufferReader {
-  constructor (buffer) {
+  private _buffer
+  private _offset
+
+  constructor (buffer: Buffer) {
     this._buffer = buffer
     this._offset = 0
   }
@@ -23,7 +26,7 @@ class MinecraftBufferReader {
 
   readString () {
     const length = this.readVarInt()
-    const val = this._buffer.toString('UTF-8', this._offset, this._offset + length)
+    const val = this._buffer.toString('utf-8', this._offset, this._offset + length)
 
     // Advance the reader index forward by the string length
     this._offset += length
@@ -36,4 +39,4 @@ class MinecraftBufferReader {
   }
 }
 
-module.exports = MinecraftBufferReader
+export default MinecraftBufferReader

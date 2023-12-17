@@ -1,23 +1,37 @@
 {
-  "name": "mcping-js",
-  "version": "1.5.0",
+  "name": "mcping-ts",
+  "version": "2.0.0",
   "description": "Library for pinging Minecraft Java Edition multiplayer servers",
-  "main": "index.js",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsup"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Cryptkeeper/mcping-js.git"
+    "url": "git+https://github.com/minere-cloud/mcping-ts"
   },
   "keywords": [
     "minecraft",
     "ping"
   ],
-  "author": "Nick Krecklow <hello@npm.nklow.com>",
+  "author": "Petr Václavek <petr@vaclavek.cloud>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Cryptkeeper/mcping-js/issues"
+    "url": "https://github.com/minere-cloud/mcping-ts/issues"
   },
-  "homepage": "https://github.com/Cryptkeeper/mcping-js#readme"
+  "homepage": "https://github.com/minere-cloud/mcping-ts#readme",
+  "dependencies": {
+    "@types/node": "^20.10.4"
+  },
+  "devDependencies": {
+    "@swc/core": "^1.3.100",
+    "tsup": "^8.0.1",
+    "typescript": "^5.3.3"
+  }
 }
