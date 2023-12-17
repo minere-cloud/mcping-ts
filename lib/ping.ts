@@ -3,6 +3,27 @@ import net from "net"
 import MinecraftProtocol from './protocol.js'
 import MinecraftBufferReader from './reader.js'
 
+type MinecraftServerInfo = {
+  version: {
+    name: string;
+    protocol: number;
+  };
+  players: {
+    max: number;
+    online: number;
+    sample: {
+      name: string;
+      id: string;
+    }[];
+  };
+  description: {
+    text: string;
+  };
+  favicon: string;
+  enforcesSecureChat: boolean;
+  previewsChat: boolean;
+}
+
 class MinecraftServer {
   private host
   private port
@@ -12,7 +33,7 @@ class MinecraftServer {
     this.port = port || 25565
   }
 
-  ping (timeout: number, protocolVersion: number, callback: (err: Error | null, response?: string) => void) {
+  ping (timeout: number, protocolVersion: number, callback: (err: Error | null, response?: MinecraftServerInfo) => void) {
     const socket = net.createConnection({
       host: this.host,
       port: this.port
