@@ -1,0 +1,26 @@
+{
+  "root": true,
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": 2015
+  },
+  "ignorePatterns": ["dist/*", "node_modules/*"],
+  "rules": {
+    "quotes": [
+      2,
+      "single",
+      {
+        "avoidEscape": true
+      }
+    ],
+    "no-multiple-empty-lines": "error",
+    "semi": [2, "never"]
+  },
+  "plugins": [
+    "perfectionist"
+  ],
+  "extends": [
+    "plugin:perfectionist/recommended-alphabetical",
+    "plugin:perfectionist/recommended-natural"
+  ]
+}
